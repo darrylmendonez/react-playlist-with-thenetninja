@@ -1,5 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+require('./css/index.css');
+
+// module requires
+var TodoItem = require('./todoItem');
 
 // create component
 var TodoComponent = React.createClass({
@@ -35,25 +39,6 @@ var TodoComponent = React.createClass({
     });
   }
 });
-
-// create TodoItem component
-var TodoItem = React.createClass({
-  render: function() {
-    return(
-      <li>
-        <div className="todo-item">
-          <span className="item-name">{this.props.item}</span>
-          <span className="item-delete" onClick={this.handleDelete}> x </span>
-        </div>
-      </li>
-    );
-  },
-
-  // custom functions
-  handleDelete: function() {
-    this.props.onDelete(this.props.item);
-  }
-})
 
 // put component into html page
 ReactDOM.render(<TodoComponent />, document.getElementById('todo-wrapper'));
